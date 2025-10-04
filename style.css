@@ -1,0 +1,255 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: url('back.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+  scroll-behavior: smooth;
+  text-align: center;
+}
+
+/* Navbar */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(6px);
+  z-index: 10;
+}
+
+nav h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+  color: #b497ff;
+}
+
+/* Section Base */
+section {
+  min-height: 100vh;
+  padding: 120px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Home Section */
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 60px;
+  width: 100%;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.home-text {
+  flex: 1 1 450px;
+  text-align: center;
+}
+
+.home-text h1 {
+  font-size: 2.6rem;
+  margin-bottom: 15px;
+}
+
+.home-text span {
+  color: #b497ff;
+}
+
+.home-text p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 25px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.home-image {
+  flex: 1 1 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-image img {
+  width: 350px;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Button */
+.btn {
+  display: inline-block;
+  padding: 12px 28px;
+  background: rgba(180, 151, 255, 0.4);
+  border-radius: 25px;
+  text-decoration: none;
+  color: #fff;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background: rgba(180, 151, 255, 0.7);
+}
+
+/* Section Cards */
+#education, #projects, #contact {
+  width: 90%;
+  max-width: 900px;
+  background: rgba(0, 0, 0, 0.55);
+  border-radius: 15px;
+  padding: 70px 40px;
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+h2 {
+  font-size: 2rem;
+  color: #b497ff;
+  margin-bottom: 25px;
+}
+
+p, li {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  text-align: center;
+}
+
+ul {
+  margin-top: 15px;
+  list-style: none;
+  padding-left: 0;
+}
+
+li {
+  margin-bottom: 12px;
+}
+
+/* Contact Links */
+#contact a {
+  color: #b497ff;
+  text-decoration: none;
+}
+#contact a:hover {
+  text-decoration: underline;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .home-container {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+
+  .home-image img {
+    width: 280px;
+    height: 280px;
+    margin-bottom: 20px;
+  }
+
+  .home-text h1 {
+    font-size: 2rem;
+  }
+
+  #education, #projects, #contact {
+    width: 95%;
+    padding: 40px 25px;
+  }
+}
+/* Contact Form Styling */
+.contact-form {
+  width: 100%;
+  max-width: 600px;
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  backdrop-filter: blur(4px);
+  transition: all 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.contact-form button {
+  align-self: center;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 25px;
+  background: #b497ff;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.contact-form button:hover {
+  background: #a17fff;
+}
