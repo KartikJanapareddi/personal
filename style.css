@@ -14,10 +14,9 @@ body {
   text-align: center;
 }
 
-/* ===== Navbar ===== */
+/* ===== Navbar (scrolls with page) ===== */
 nav {
-  position: fixed;
-  top: 0;
+  position: relative;  /* changed from fixed to relative */
   width: 100%;
   padding: 15px 40px;
   display: flex;
@@ -53,13 +52,18 @@ nav ul li a.active {
 
 /* ===== Section Base ===== */
 section {
-  min-height: 100vh;              /* Full viewport height */
+  min-height: 100vh;
   display: flex;
-  justify-content: center;         /* Horizontal centering */
-  align-items: center;             /* Vertical centering */
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
   text-align: center;
   padding: 0 20px;
+}
+
+/* Optional: spacing for first section to prevent overlap */
+section:first-of-type {
+  margin-top: 20px;
 }
 
 /* ===== Home Section ===== */
@@ -72,37 +76,41 @@ section {
   width: 100%;
   max-width: 1100px;
   margin: 0 auto;
+  flex-direction: row; /* ensures text left, image right */
 }
 
+/* Make text always left and image right */
 .home-text {
+  order: 1; /* left side */
   flex: 1 1 450px;
-  text-align: center;
-}
-
-.home-text h1 {
-  font-size: 2.8rem;
-  margin-bottom: 15px;
-}
-
-.home-text span {
-  color: #b497ff;
-}
-
-.home-text p {
-  font-size: 1.15rem;
-  line-height: 1.8;
-  margin-bottom: 25px;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+  text-align: left; /* align text left for desktop */
 }
 
 .home-image {
+  order: 2; /* right side */
   flex: 1 1 350px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
+/* On smaller screens, stack vertically */
+@media (max-width: 900px) {
+  .home-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .home-text {
+    order: 2; /* text below image */
+    text-align: center;
+  }
+
+  .home-image {
+    order: 1; /* image on top */
+  }
+}
+
 
 .home-image img {
   width: 350px;
@@ -114,20 +122,34 @@ section {
 }
 
 /* ===== Button Styling ===== */
-.btn {
+/* ===== Button Styling ===== */
+.btn, .contact-form button {
   display: inline-block;
-  padding: 12px 28px;
-  background: rgba(180, 151, 255, 0.4);
-  border-radius: 25px;
+  padding: 14px 35px;              /* slightly larger for prominence */
+  background: linear-gradient(135deg, #b497ff, #8f63ff); /* gradient for futuristic look */
+  border-radius: 30px;             /* smoother round edges */
   text-decoration: none;
   color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  text-align: center;
+  cursor: pointer;
   transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(180, 151, 255, 0.4); /* subtle glow */
 }
 
-.btn:hover {
-  background: rgba(180, 151, 255, 0.7);
-  transform: translateY(-2px);
+/* Hover Effect */
+.btn:hover, .contact-form button:hover {
+  background: linear-gradient(135deg, #8f63ff, #b497ff);
+  transform: translateY(-3px) scale(1.05); /* lifts button on hover */
+  box-shadow: 0 6px 25px rgba(180, 151, 255, 0.6); /* stronger glow */
 }
+
+/* Optional: Center button in form */
+.contact-form button {
+  align-self: center;
+}
+
 
 /* ===== Section Cards ===== */
 #education, #projects, #contact {
@@ -238,7 +260,7 @@ footer {
   transform: translateY(-2px);
 }
 
-/* ===== Responsive ===== */
+/* ===== Responsive: Tablet ===== */
 @media (max-width: 900px) {
   .home-container {
     flex-direction: column;
@@ -266,16 +288,116 @@ footer {
   }
 }
 
-@media (max-width: 500px) {
-  .home-text p, p, li {
+/* ===== Mobile Optimization ===== */
+@media (max-width: 768px) {
+  nav {
+    padding: 15px 20px;
+  }
+
+  nav h2 {
+    font-size: 1.3rem;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+
+  nav ul li a {
     font-size: 1rem;
   }
 
-  .contact-form input, .contact-form textarea {
-    padding: 12px 15px;
+  section {
+    padding: 60px 15px;
+  }
+
+  .home-text h1 {
+    font-size: 1.9rem;
+  }
+
+  .home-text p {
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 90%;
+    margin: 0 auto 20px auto;
+  }
+
+  .home-image img {
+    width: 220px;
+    height: 220px;
+    margin-bottom: 15px;
+  }
+
+  #education, #projects, #contact {
+    width: 95%;
+    padding: 35px 20px;
+    margin-top: 40px;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+
+  p, li {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .contact-form {
+    gap: 15px;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    padding: 10px 12px;
+    font-size: 0.95rem;
   }
 
   .contact-form button {
     padding: 12px 25px;
+    font-size: 0.95rem;
+  }
+
+  footer {
+    font-size: 0.85rem;
+    padding: 15px 10px;
   }
 }
+
+/* ===== Extra Small Screens ===== */
+@media (max-width: 480px) {
+  .home-text h1 {
+    font-size: 1.7rem;
+  }
+
+  .home-text p {
+    font-size: 0.95rem;
+  }
+
+  .home-image img {
+    width: 180px;
+    height: 180px;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 0.9rem;
+    padding: 8px 10px;
+  }
+
+  .contact-form button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+
+  section {
+    padding: 50px 10px;
+  }
+}
+
